@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>To Do Liste </title>
+</head>
+
+<body>
+    <div id="tds" class="container">
+        <form action="">
+            <input type="text" class="form-control" placeholder="Type Your Tasck " v-model="taskText">
+            <button @click.prevent="add" :disabled="!taskText">Add Task</button>
+            <button class="delete-all" @clik.prevent="deleteAll" v-if=" tasks.length >1" >Delette All</button>
+        </form>
+        <div class="tasks-list" v-for="(task , index) in tasks">
+            <div class="task-box" 
+            @click="task.done = !task.done" 
+             :style="{'text-decoration' : task.done ?'line-through' :  ''}">
+                {{ task.words }}
+            </div>
+            <span class="delete" @click="deleteTask(index)">Delete</span>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html
